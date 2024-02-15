@@ -7,6 +7,7 @@ function LandingPage(): JSX.Element {
   const [term, setTerm] = useState<string>("");
   const [options, setOptions] = useState<[]>([]);
   const [city, setCity] = useState<optionsType | null>(null);
+  const [forecast, setForecast] = useState<null>(null);
   // change fuction for input
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
@@ -35,18 +36,28 @@ function LandingPage(): JSX.Element {
   // when user click search button to submit the city
   const onSubmit = () => {
     if (!city) return;
-    getForcast(city);
+    getForecast(city);
   };
-  const getForcast = (city: optionsType) => {
+  const getForecast = (city: optionsType) => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${apiKey}`
     )
       .then((response) => response.json())
-      .then((data) => console.log({ data }));
+      .then((data) => setForecast(data));
   };
   return (
     <main className="w-full max-w-xl flex flex-col justify-center items-center">
-      <Search term={term} options={options} onChangeInput={onChangeInput} onOptionSelect={onOptionSelect} onSubmit={onSubmit}/>
+      {forecast ? (
+        <p> we have a forecast</p>
+      ) : (
+        <Search
+          term={term}
+          options={options}
+          onChangeInput={onChangeInput}
+          onOptionSelect={onOptionSelect}
+          onSubmit={onSubmit}
+        />
+      )}
     </main>
   );
 }

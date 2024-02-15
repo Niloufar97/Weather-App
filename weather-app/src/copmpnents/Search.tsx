@@ -7,7 +7,7 @@ type props = {
     onOptionSelect : (option: optionsType) => void,
     onSubmit : () => void
 }
-function Search({term , options , onChangeInput, onOptionSelect , onSubmit} : props) {
+function Search({term , options , onChangeInput, onOptionSelect , onSubmit} : props) : JSX.Element {
   return (
     <section className="w-full max-w-xl min-h-96 flex flex-col justify-center items-center bg-white bg-opacity-20 rounded backdrop-blur-lg text-zinc-700 py-2">
         <h1 className="text-3xl m-2">
