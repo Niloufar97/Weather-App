@@ -1,11 +1,11 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { optionsType } from "../types";
+import { forecastType, optionsType } from "../types";
 const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
 const useForecast = () => {
   const [term, setTerm] = useState<string>("");
   const [options, setOptions] = useState<[]>([]);
   const [city, setCity] = useState<optionsType | null>(null);
-  const [forecast, setForecast] = useState<null>(null);
+  const [forecast, setForecast] = useState<forecastType | null>(null);
   // change fuction for input
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim();
@@ -38,7 +38,7 @@ const useForecast = () => {
   };
   const getForecast = (city: optionsType) => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${apiKey}`
     )
       .then((response) => response.json())
       .then((data) => setForecast(data));
