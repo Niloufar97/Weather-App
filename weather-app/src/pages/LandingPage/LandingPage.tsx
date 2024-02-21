@@ -1,3 +1,4 @@
+import Forecast from "../../copmpnents/Forecast";
 import Search from "../../copmpnents/Search";
 import useForecast from "../../hooks/useForecast";
 
@@ -7,7 +8,7 @@ function LandingPage(): JSX.Element {
   return (
     <main className="w-full max-w-xl flex flex-col justify-center items-center">
       {forecast ? (
-        <h1>here is {forecast.city.name}</h1>
+        <Forecast data={forecast}/> 
       ) : (
         <Search
           term={term}

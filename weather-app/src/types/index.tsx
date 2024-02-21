@@ -7,8 +7,8 @@ export type forecastType = {
     city :{
         name:string
         country: string
-        sunrise: string
-        sunset: string
+        sunrise: number
+        sunset: number
     }
     list : [
         {
