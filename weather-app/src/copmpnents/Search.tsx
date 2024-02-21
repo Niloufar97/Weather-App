@@ -24,10 +24,10 @@ function Search({term , options , onChangeInput, onOptionSelect , onSubmit} : pr
           <ul className="absolute bg-white top-9 rounded">
             {options.map((option: optionsType, index: number) => {
               return (
-                <li className="hover:bg-zinc-400 cursor-pointer" key={index}>
+                <li className="hover:bg-zinc-400 cursor-pointer" key={index} onClick={() => onOptionSelect(option)}>
                   <button
                     className="px-1"
-                    onClick={() => onOptionSelect(option)}
+                    
                   >
                     {option.name}
                   </button>
