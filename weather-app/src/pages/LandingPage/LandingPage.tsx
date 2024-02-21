@@ -7,7 +7,7 @@ function LandingPage(): JSX.Element {
   return (
     <main className="w-full max-w-xl flex flex-col justify-center items-center">
       {forecast ? (
-        <p> we have a forecast</p>
+        <h1>here is {forecast.city.name}</h1>
       ) : (
         <Search
           term={term}

@@ -4,10 +4,12 @@ export type optionsType = {
     lon : number
 }
 export type forecastType = {
-    name:string
-    country: string
-    sunrise: string
-    sunset: string
+    city :{
+        name:string
+        country: string
+        sunrise: string
+        sunset: string
+    }
     list : [
         {
             dt: number

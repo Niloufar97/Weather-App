@@ -41,9 +41,14 @@ const useForecast = () => {
       `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${apiKey}`
     )
       .then((response) => response.json())
-      .then((data) => setForecast(data));
+      .then((data) =>{
+        const forecastData = {
+          ...data,
+          list: data.list.slice(0 , 16)
+        }
+        setForecast(forecastData);
+      });
   };
-
   return(
     {
         term,
