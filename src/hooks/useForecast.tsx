@@ -16,10 +16,11 @@ const useForecast = () => {
   // get options from search box
   const getSearchOptions = (value: string) => {
     fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${apiKey}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${apiKey}`
     )
       .then((response) => response.json())
-      .then((data) => setOptions(data));
+      .then((data) => setOptions(data))
+      .catch((err) => console.error(err))
   };
   // when user select one option from the list
   const onOptionSelect = (option: optionsType) => {
@@ -47,7 +48,8 @@ const useForecast = () => {
           list: data.list.slice(0 , 16)
         }
         setForecast(forecastData);
-      });
+      })
+      .catch((err) => console.error(err))
   };
   return(
     {

@@ -63,7 +63,7 @@ function Forecast({ data }: props): JSX.Element {
                 {index === 0 ? "Now" : new Date(item.dt * 1000).getHours()}
               </p>
               <img
-                src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
               ></img>
               <p className="text-sm font-bold">
                 <Degree temp={Math.round(item.main.temp)} />
