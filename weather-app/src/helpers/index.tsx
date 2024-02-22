@@ -15,9 +15,9 @@ export const getWindDirection = (deg: number): string => {
 
 export const getHumidityValue = (level: number): string => {
   if (level <= 55) return 'Dry and comfortable'
-  if (level > 55 && level <= 65) return 'A bit uncomfortable, sticky feeling'
+  if (level > 55 && level <= 65) return 'sticky feeling'
 
-  return 'Lots of moisture, uncomfortable air'
+  return 'Lots of moisture'
 }
 
 export const getVisibilityValue = (number: number): string => {
