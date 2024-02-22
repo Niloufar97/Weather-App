@@ -1,8 +1,15 @@
-import { getHumidityValue, getSunTime, getVisibilityValue, getWindDirection } from "../helpers";
+import {
+  getHumidityValue,
+  getSunTime,
+  getVisibilityValue,
+  getWindDirection,
+} from "../helpers";
 import { forecastType } from "../types";
 import Sunrise from "./Icons/Sunrise";
 import Sunset from "./Icons/Sunset";
 import Tile from "./Tile";
+import { useState } from "react";
+import LandingPage from "../pages/LandingPage/LandingPage";
 type props = {
   data: forecastType;
 };
@@ -16,6 +23,15 @@ const Degree = ({ temp }: { temp: number }): JSX.Element => {
 };
 function Forecast({ data }: props): JSX.Element {
   const today = data.list[0];
+  const [showSearch, setShowSearch] = useState(false);
+  const backToSearch = () => {
+    setShowSearch(true);
+  }
+  if (showSearch) {
+    return (
+    <LandingPage/>
+    );
+  }
 
   return (
     <div className="w-full md:max-w-[500px] py-4 bg-white bg-opacity-20 rounded backdrop-blur-lg">
@@ -82,10 +98,26 @@ function Forecast({ data }: props): JSX.Element {
                 : "warmer"
             }`}
           />
-          <Tile icon="humidity" title="Humidity" info={`${today.main.humidity} %`} description={getHumidityValue(today.main.humidity)}/>
-          <Tile icon="visibility" title="Visibility" info={`${(today.visibility / 1000).toFixed()} km`} description={`${getVisibilityValue(today.visibility)}`}/>
+          <Tile
+            icon="humidity"
+            title="Humidity"
+            info={`${today.main.humidity} %`}
+            description={getHumidityValue(today.main.humidity)}
+          />
+          <Tile
+            icon="visibility"
+            title="Visibility"
+            info={`${(today.visibility / 1000).toFixed()} km`}
+            description={`${getVisibilityValue(today.visibility)}`}
+          />
         </section>
       </div>
+      <button
+        className="w-full mx-auto"
+        onClick={backToSearch}
+      >
+        Back
+      </button>
     </div>
   );
 }
