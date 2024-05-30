@@ -2,7 +2,7 @@
 This Weather Forecast App is a React TypeScript application designed with Tailwind CSS. Its primary goal is to provide users with a convenient way to check the weather forecast for any location worldwide. The app utilizes the free API provided by [OpenWeatherMap](https://openweathermap.org/) to fetch accurate and up-to-date weather data.
 
 # 👾Demo
-You can see the Demo [here](https://65d7472697d34f22c798d374--weather-app-niloufar.netlify.app/)
+You can see the Demo [here](https://weather-app-niloufar.netlify.app/)
 
 # 👩‍💻Technologies Used:
 React: A popular JavaScript library for building user interfaces.
